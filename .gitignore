@@ -1,0 +1,8 @@
+# emacs temp file
+*~
+
+# ignore the test directory
+test
+
+# ignore the fresh binary file
+fs_can

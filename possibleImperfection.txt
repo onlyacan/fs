@@ -1,0 +1,7 @@
+#1
+in calcMicro.H
+   Re = Foam:: pow((1.0 - gl),(1.0/3.0)) * Rf 
+   is changed to:
+   Re = Foam:: pow((1.0 - gl),(1.0/3.0)) * Rf * 0.999999;     
+   to avoid divived by error problem in next equation
+

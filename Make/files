@@ -1,0 +1,4 @@
+main.C
+
+EXE = ./fs_can
+
