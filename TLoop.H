@@ -14,6 +14,8 @@ do{
 
     // --- PISO loop
     //#include "pisoLoop.H"
+    
+    
 
     #include "eqn/TEqn.H"
 
@@ -56,6 +58,7 @@ if(TLoopCounter >= MAX_TITER) {
  }
  else{
     Info << "T converged in " << TLoopCounter << " iteration" << endl;
+    old_ddt_gs = fvc:: ddt(gs); // used in next time step 
  }
 
 

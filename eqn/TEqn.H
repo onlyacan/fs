@@ -5,7 +5,7 @@ fvScalarMatrix TEqn
  //+ cp * fvm:: div(phi, T)
  ==
  1.0 / rho * fvm:: laplacian(k, T)
- + L * ddt_gs
+ + L * old_ddt_gs
  + Leut * ddt_ge // eutectic reaction
  + ddt_T0 * cp // specified heat sink for 0D test
  );  

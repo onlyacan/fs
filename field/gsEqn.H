@@ -45,6 +45,21 @@ volScalarField ddt_gs
  );
 
 
+volScalarField old_ddt_gs
+(
+   IOobject
+   (
+    "old_ddt_gs",
+    runTime.timeName(),
+    mesh,
+    IOobject::NO_READ,
+    IOobject::AUTO_WRITE
+    ),
+   mesh, 
+   ddt_gs0
+ );
+
+
 // declared in initialFields.H
 volScalarField gd
 (
