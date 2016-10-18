@@ -51,7 +51,8 @@ do{
 
 
 if(TLoopCounter >= MAX_TITER) {
-    Info << "T loop: Maxinum number of iteration excecute, but solution is still not converged" << endl;
+    Info << "T loop: **NOT** converged after " 
+         << MAX_TITER << " iteration" << endl;
     return -1;
  }
  else{

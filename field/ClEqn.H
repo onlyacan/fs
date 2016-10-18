@@ -42,3 +42,21 @@ surfaceScalarField glgf_phi
     ),
     linearInterpolate(U) & mesh.Sf()
 );
+
+
+
+volScalarField alpha_Cl // = ddt_gl + ad_ld
+(
+   IOobject
+   (
+    "alpha_Cl",
+    runTime.timeName(),
+    mesh,
+    IOobject::NO_READ,
+    IOobject::AUTO_WRITE
+    ),
+    mesh, 
+    dimensionedScalar("alpha_Cl0", dimensionSet (0, 0, -1, 0, 0, 0, 0), 0.0)
+ );
+
+dimensionedScalar zeroValue_alpha_Cl("zeroValue_alpha_Cl", dimensionSet (0, 0, -1, 0, 0, 0, 0), 0.0);

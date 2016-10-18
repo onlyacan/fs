@@ -1,4 +1,4 @@
-const int MAX_TITER = 100; // Miehe read it from a property dict "fsUpdate"
+const int MAX_TITER = 200; // Miehe read it from a property dict "fsUpdate"
 //double initResd = 0.0;
 //double finalResd = 0.0;
 //double residualTolerence = 1.0e-6;
