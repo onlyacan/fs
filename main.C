@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
                    << " " << TLoopCounter 
                    << " " << micoCalcLoopCounter 
                    << "\n" << endl;
+        if (timeLevel % 50 == 1) numericLog << std::flush;
     }
 
     output.close();

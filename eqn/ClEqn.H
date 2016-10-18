@@ -4,12 +4,16 @@
     
 
     // WB1994
+    // constrain the Cl by introduce a coefficnet alpha_Cl in field/ClEqn.H
+    // which equals to (ddt_gl + ad_ld)
+ 
+    alpha_Cl = Foam:: max(zeroValue_alpha_Cl, ddt_gl + ad_ld);
+
     
     fvScalarMatrix ClEqn(
-        fvm:: ddt(gl, Cl)
+        gl * fvm:: ddt(Cl)
         ==
-        Ce * ddt_gl
-        + ad_ld * Ce - fvm:: Sp(ad_ld, Cl)
+        alpha_Cl * Ce - fvm:: Sp(alpha_Cl, Cl) 
     );
 
     // ClEqn.relax();
