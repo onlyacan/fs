@@ -2,7 +2,7 @@
 fvScalarMatrix TEqn
 (
  cp * fvm:: ddt(T)
- //+ cp * fvm:: div(phi, T)
+ + cp * fvm:: div(phi, T)
  ==
  1.0 / rho * fvm:: laplacian(k, T)
  + L * ddt_gs
@@ -33,4 +33,3 @@ Csd = kp * Ce;
 ddt_Cd = fvc:: ddt(Cd);
 
 
-Info << "one T updating iteration finished" << endl;

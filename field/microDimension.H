@@ -1,6 +1,6 @@
 /************* interface area per unit volume *******************/
 // Se, Ss
-
+// interfacial area concentration of dendrite envolope, Unit:A/V m-1
 dimensionedScalar Se0("Se0", areaPerVolumn, 0.0);
 volScalarField Se
 (
@@ -15,6 +15,7 @@ volScalarField Se
    mesh, Se0
  );
 
+// interfacial area concentration of solid phase, Unit:A/V m-1
 dimensionedScalar Ss0("Ss0", areaPerVolumn, 0.0);
 volScalarField Ss
 (
@@ -30,7 +31,8 @@ volScalarField Ss
  );
 
 
-
+// see Martorano and Beckermann 2003, 
+// instantaneous envelope radius 
 dimensionedScalar Re0("Re0", lengthDims, 0.0);
 volScalarField Re
 (

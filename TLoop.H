@@ -8,17 +8,9 @@ do{
     TLoopCounter ++;
     T.storePrevIter();
 
-    #include "CourantNo.H"
-    // Momentum predictor
-    //#include "UEqn.H"
-
-    // --- PISO loop
-    //#include "pisoLoop.H"
-
     #include "eqn/TEqn.H"
 
-    
-    #include "microLoop.H"
+    //#include "microLoop.H"
 
     // check the consistance
     diff_T  = Foam:: gMax(mag(( T.internalField() -  T.prevIter().internalField())/( T.prevIter().internalField() + S)));
@@ -40,12 +32,8 @@ do{
         &&(diff_gs <= tol_gs) 
         &&(diff_Cl <= tol_Cl);
 
+    converged = true;
     
-        
-        
-    //converged = true;
-
-
 } while (TLoopCounter <= MAX_TITER && !converged);
 
 
@@ -54,7 +42,8 @@ if(TLoopCounter >= MAX_TITER) {
     Info << "T loop: **NOT** converged after " 
          << MAX_TITER << " iteration" << endl;
     return -1;
- }
+}
+ 
  else{
     Info << "T converged in " << TLoopCounter << " iteration" << endl;
  }

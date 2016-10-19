@@ -1,5 +1,6 @@
 #include "fvCFD.H"
-#include "pisoControl.H"
+#include "pimpleControl.H"
+#include "fixedFluxPressureFvPatchScalarField.H"
 #include "fvIOoptionList.H"
 
 
@@ -9,7 +10,7 @@ int main(int argc, char *argv[])
     #include "createTime.H"
     #include "createMesh.H"
 
-    pisoControl piso(mesh);
+    pimpleControl pimple(mesh);
 
     #include "commonDimension.H"
     #include "global.H" // some global constant
@@ -31,9 +32,20 @@ int main(int argc, char *argv[])
     {
         timeLevel ++;
         Info << "Time = " << runTime.timeName() << nl << endl;
-
-        #include "TLoop.H" // U,P updated in TLoop
-
+        #include "CourantNo.H"
+        
+        while(pimple.loop())
+        {
+            // Momentum predictor
+            #include "eqn/pimple/UEqn.H"
+            
+            // --- PISO loop
+            #include "pimpleLoop.H"
+        
+            // other equations
+            #include "TLoop.H" 
+        }
+        
         runTime.write();
 
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
@@ -50,7 +62,7 @@ int main(int argc, char *argv[])
 
     output.close();
     numericLog.close();
-    Info<< "End and normal exit\n" << endl;
+    // Info<< "End and normal exit\n" << endl;
 
     return 0;
 }

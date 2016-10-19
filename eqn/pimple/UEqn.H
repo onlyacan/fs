@@ -12,7 +12,9 @@ fvVectorMatrix UEqn
     - fvm:: Sp(nu / K * gf, U)
 );
 
-if (piso.momentumPredictor())
+UEqn.relax();
+
+if (pimple.momentumPredictor())
 {
     /** orignal 
     solve(UEqn == -1/rho0 * gf * fvc:: grad(p));  // kenematic pressure, don't have to change the PISO p loop
